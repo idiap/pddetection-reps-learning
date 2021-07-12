@@ -1,9 +1,7 @@
 # ***Supervised Speech Representation Learning for Parkinson's Disease Classification***
 
 
-<p align="center">
 ![alt text](imgs/Pathology_detection.png)
-</p>
 
 ## **Introduction**
 
