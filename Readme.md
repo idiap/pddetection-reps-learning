@@ -31,7 +31,7 @@ We include in this repo
 
 ## **Requirements**
 Python 3 or above
-PyTorch 1.6.0 or above
+PyTorch 1.6.0 or above.
 Other required packages are listed below, and also in requirements.yml:
 - cudatoolkit
 - joblib
@@ -41,7 +41,10 @@ Other required packages are listed below, and also in requirements.yml:
 - soundfile
 - tqdm
 
-
+To use conda to create an environment and install the dependencies, run:
+```
+conda env create -f req.yml
+```
 
 ## Dataset
 We tested the method on the Spanish PC-GITA database using cross-fold validation paradigm, however here as a demo for feature extraction (both on-the-fly and offline), we used a **dummy database** from wav samples of "Boston University Radio Corpus Data (female speaker)".
