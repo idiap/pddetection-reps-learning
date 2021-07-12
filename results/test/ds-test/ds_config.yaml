@@ -1,0 +1,31 @@
+# downstream model/training configuration
+# Copyright (c) 2021 Idiap Research Institute, http://www.idiap.ch/
+# Written by Parvaneh Janbakhshi <parvaneh.janbakhshi@idiap.ch>
+
+Selecteddownstream: MLP
+SelectedEncodedLayers: -1                     # list of indices of mlp layers or -1 (last layer of mlp encoder) is used,
+                                              # if it is a list, it concatenates the output of layers with indices in the list
+
+MLP:                                          # Dropout > Linear layer > nonlinearity > Linear layer > nonlinearity ... > Linear layer > outputdim
+  outputdim: 2                                # number of classes--> output size
+  hidden_units: [64, 64]                      # Number of layers and their hidden units before output. if is [] means 1 layer connecting input and output
+  nonlinearity: leaky-relu                    # The non-linear activation function "leaky-relu", "relu" or no nonlinearity ""
+  dropout_prob: 0.2                           # The dropout probability after encoded layer (before MLP)
+
+dataloader:
+  online: False                               # If True it computes feature-on-the-fly (online), otherwise uses saved features
+  num_workers: 4                              # torch Dataloader workers
+  batch_size: 10                             # batch size
+  sequence_length: 500                        # miliseconds (-->to frames) segmenting audio as inputs to networks
+  data_path: preprocess/dummy_database/folds/  # Source data path, 'in folder preprocess/Dataset_name/folds
+  fs: 16000                                   # sampling frequency (needed for online feature extraction)
+                                              # Training options
+runner:
+  Max_epoch: 20                              # total steps for training
+  optimizer:
+    type: SGD                                 # optimizer type: ['Adam', 'SGD'].
+    lr: 2e-2                                  # Learning rate for downstream opt.
+    minlr: 2e-3                               # minimum (lower bound) lr after decreasing learning rate for early stopping
+    upslr_ratio: 0.1                          # ratio of learning rate for upstream fine-tuning (upstream_lr = upslr_ratio * lr)
+    momentum: 0.0                             # momentum only for SGD
+    loss: CE                                  # downstream loss: MSE or CE (Cross Entropy)

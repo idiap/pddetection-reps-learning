@@ -1,0 +1,10 @@
+
+.vscode
+queue.pl
+Phonological_posteriors_extraction
+*/*__pycache__
+
+train_downstream_fold_parallelize.py
+train_upstream_2auxiliary_fold_parallelize_merge.py
+Run_mutil_exps_two_aux_fused_merge.py
+Run_mutil_exps_two_aux_fused_merge_dummy.py

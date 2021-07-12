@@ -1,0 +1,12 @@
+uttr_num,ID,file_path,length,label,spk_ID
+0,0,preprocess/dummy_database/segmented_audio_data/spk1_uttr0.wav,8000.0,0,spk1
+1,0,preprocess/dummy_database/segmented_audio_data/spk1_uttr1.wav,3140.0,0,spk1
+0,1,preprocess/dummy_database/segmented_audio_data/spk2_uttr0.wav,8000.0,0,spk2
+1,1,preprocess/dummy_database/segmented_audio_data/spk2_uttr1.wav,3690.0,0,spk2
+0,2,preprocess/dummy_database/segmented_audio_data/spk3_uttr0.wav,8000.0,0,spk3
+1,2,preprocess/dummy_database/segmented_audio_data/spk3_uttr1.wav,40.0,0,spk3
+0,3,preprocess/dummy_database/segmented_audio_data/spk4_uttr0.wav,8000.0,1,spk4
+1,3,preprocess/dummy_database/segmented_audio_data/spk4_uttr1.wav,3242.3125,1,spk4
+0,4,preprocess/dummy_database/segmented_audio_data/spk5_uttr0.wav,8000.0,1,spk5
+1,4,preprocess/dummy_database/segmented_audio_data/spk5_uttr1.wav,1978.875,1,spk5
+0,5,preprocess/dummy_database/segmented_audio_data/spk6_uttr0.wav,2012.875,1,spk6

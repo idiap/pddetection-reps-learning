@@ -1,0 +1,21 @@
+name: test
+
+dependencies:
+  - python=3.7
+  - cudatoolkit
+  - joblib
+  - matplotlib
+  - pandas
+  - pytorch
+  - scikit-learn
+  - torchaudio
+  - yaml
+  - pip=21.0.1
+
+  - pip:
+    - numpy
+    - scipy
+    - soundfile
+    - tqdm
+    - pyyaml
+

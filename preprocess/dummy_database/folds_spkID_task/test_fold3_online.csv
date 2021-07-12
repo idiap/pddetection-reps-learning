@@ -1,0 +1,4 @@
+uttr_num,ID,file_path,length,label,spk_ID
+0,2,preprocess/dummy_database/segmented_audio_data/spk3_uttr0.wav,8000.0,0,spk3
+1,2,preprocess/dummy_database/segmented_audio_data/spk3_uttr1.wav,40.0,0,spk3
+0,5,preprocess/dummy_database/segmented_audio_data/spk6_uttr0.wav,2012.875,1,spk6

@@ -1,0 +1,18 @@
+# feature extraction configuration
+# Copyright (c) 2021 Idiap Research Institute, http://www.idiap.ch/
+# Written by Parvaneh Janbakhshi <parvaneh.janbakhshi@idiap.ch>
+
+
+feat_type: fbank                # feat_type can be: spectrogram, fbank, mfcc
+
+torchaudio:
+  frame_length: 32              # frame length in ms
+  frame_shift: 4                # frame shift in ms
+  preemphasis_coefficient: 0.97
+  window_type: hamming
+  num_mel_bins: 126             # for fbank and mfcc
+  channel: 0
+
+postprocess:                    # for torchaudio features
+  delta: 0                      # length of delta window. 0 means no delta computation
+  cmvn: False                   # If True normalizes feature dimension across utterance time

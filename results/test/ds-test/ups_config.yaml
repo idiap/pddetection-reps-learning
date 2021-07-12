@@ -1,0 +1,57 @@
+# Upstream model/training configuration
+# Copyright (c) 2021 Idiap Research Institute, http://www.idiap.ch/
+# Written by Parvaneh Janbakhshi <parvaneh.janbakhshi@idiap.ch>
+
+SelectedAENetwork: AECNNNet                    # type of the network
+
+AEMLPNet:
+  hidden_size: 100                             # hidden size (coded dimension)
+  hidden_units: [128]                          # Number of layers and their hidden units before/after latent dimension. if is [] means
+                                               # 1 layer connecting latent to intermediate output layer
+  nonlinearity: relu                           # The non-linear activation function "leaky-relu", "relu" or no nonlinearity ""
+  dropout_prob: 0.0                            # dropout after the encoder input only (better to set to 0!)
+
+AECNNNet:
+  hidden_size: 128                             # hidden size (coded dimension)
+  hidden_units: [256]                          # Number of layers and their hidden units before/after latent dimension
+                                               # (between conv layers and latent layer). if is [] means 1 layer connecting conv layers and latent
+  kernelsize: 3                                # kernel size in all conv layers
+  poolingsize: 2                               # pooling size in all conv layers
+  convchannels: [16, 32, 64, 128]              # Number of conv layers and their channels ([1, outchannel1, outchannel2, ...]
+                                               # indicating number of convs in encoder and decoder).
+  nonlinearity: leaky-relu                     # The non-linear activation function "leaky-relu", "relu" or no nonlinearity ""
+  dropout_prob: 0.0                            # dropout after the encoder input only (better to set to 0!)
+  batchnorm: True                              # If True, applies batch norm after conv layers
+
+AERNNNet:
+  hidden_size: 128                             # hidden size (coded dimension)
+  hidden_units: [256]                          # Number of MLP layers after hidden states (RNN_dims[-1]) to build final bottleneck
+                                               # (coded) dimension of size hidden_size, if is [] means one layer connecting last hidden states (of size RNN_dims[-1])
+                                               # and bottleneck features (of size hidden_size)
+  RNN_dims: [128]                              # Number of stacked LSTM layers with hidden dimension RNN_dims[i]. It should *not* be [],
+                                               # e.g., ipnut > RNN_dims[i] > hidden_size
+  stacked_layers_nums: 1                       # Number of stacked LSTM layers for decoder only; uses many LSTM with the same hidden_size
+                                               # , e.g., stacked_layer=2:  LSTM(ipnut,hidden) > LSTM(hidden,hidden)
+  bidirectional: True                          # Direction of LSTM only for encoder
+  nonlinearity: leaky-relu                     # The non-linear activation function "leaky-relu", "relu", or no nonlinearity ""
+  dropout_prob: 0.0                            # The dropout probability for all LSTM outputs (except last one)
+
+
+dataloader:
+  online: False                                # If True it computes feature-on-the-fly (online), otherwise uses saved features
+  num_workers: 4                               # torch Dataloader workers
+  batch_size: 10                              # batch size
+  sequence_length: 500                         # miliseconds (-->to frames) segmenting audio as input to networks
+  data_path: preprocess/dummy_database/folds/   # Source data path, 'in folder preprocess/Dataset_name/folds
+  fs: 16000                                    # sampling frequency (needed for online feature extraction)
+
+# Training options
+runner:
+  Max_epoch: 20                                 # total steps for training
+  optimizer:
+    type: SGD                                  # optimizer type: ['Adam', 'SGD'].
+    lr: 2e-2                                   # Learning rate for optimizer.
+    minlr: 2e-3                                # minimum lr after decreasing learning rate for early stopping
+    loss: MSE                                  # upstream loss: MSE or L1.
+    momentum: 0.0                              # momentum only for SGD
+
