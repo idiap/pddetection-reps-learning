@@ -1,4 +1,6 @@
 uttr_num,ID,file_path,length,label,spk_ID
 0,2,preprocess/dummy_database/features_data/fbank/spk3_uttr0.npy,1993.0,0,spk3
-1,2,preprocess/dummy_database/features_data/fbank/spk3_uttr1.npy,3.0,0,spk3
-0,5,preprocess/dummy_database/features_data/fbank/spk6_uttr0.npy,496.0,1,spk6
+1,2,preprocess/dummy_database/features_data/fbank/spk3_uttr1.npy,1993.0,0,spk3
+2,2,preprocess/dummy_database/features_data/fbank/spk3_uttr2.npy,13.0,0,spk3
+0,4,preprocess/dummy_database/features_data/fbank/spk5_uttr0.npy,1993.0,1,spk5
+1,4,preprocess/dummy_database/features_data/fbank/spk5_uttr1.npy,487.0,1,spk5

@@ -258,9 +258,9 @@ def folds_making(feat_path_csv, wav_path_csv, folds_path, feat_type, spk_index, 
     folds_num = 3
     """no shuffling since preshuffling is done on speakers indices before gender and age 
     balancing, otherwise shuffling is needed"""
-    main_Kfold_obj = StratifiedKFold(n_splits=folds_num, shuffle=False)
+    main_Kfold_obj = StratifiedKFold(n_splits=folds_num, shuffle=True)
     val_folds_num = folds_num - 1
-    val_Kfold_obj = StratifiedKFold(n_splits=val_folds_num, shuffle=False)
+    val_Kfold_obj = StratifiedKFold(n_splits=val_folds_num, shuffle=True)
 
     for test_fold in range(1, folds_num + 1):
         D = main_Kfold_obj.split(spk_index, labels)
