@@ -47,7 +47,7 @@ conda env create -f req.yml
 ```
 
 ## Dataset
-We tested the method on the Spanish PC-GITA database using cross-fold validation paradigm, however here as a demo for feature extraction (both on-the-fly and offline), we used a **dummy database** from wav samples of "Boston University Radio Corpus Data (female speaker)".
+We tested the method on the Spanish PC-GITA database using cross-fold validation paradigm, however here as a demo for feature extraction (both on-the-fly and offline), we used a **dummy database** from wav samples of "Boston University Radio Corpus Data (female speaker)" (in directory preprocess/dummy_database/audio_data):
 `https://catalog.ldc.upenn.edu/LDC96S36`
 `http://www.fit.vutbr.cz/~motlicek/speech_hnm.html`
 To know more about the used pathological speech database, please refer to our paper.
