@@ -209,7 +209,7 @@ class FeatureExtractionPretrained(nn.Module):
 
 
 if __name__ == "__main__":
-    # ------------------------------ get rid of this ----------------------------- #
+    # ------------------------------ changing path for local run------------------ #
     from pathlib import Path
     import sys
 
