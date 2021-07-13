@@ -69,9 +69,9 @@ To train the upstream model (e.g., for fold 1) with auxiliary tasks with loss we
 ```
 python train_upstream.py --newinit --valmonitor --auxiltr --auxlossw1 -0.01 --auxlossw2 0.01
 ```
-NOTE: for an *adversarial auxiliary task* (i.e., speaker ID task), the loss weight should be a *negative* number (e.g., -0.01)
+NOTE: for an *adversarial auxiliary task* (i.e., speaker ID task), the loss weight should be a *negative* number (e.g., -0.01).
 
-in case of using only one auxiliary task for the upstream training, set the corresponding loss weight argument to zero (e.g., "--auxlossw2 0" )
+in case of using only one auxiliary task for the upstream training, set the corresponding loss weight argument to zero (e.g., "--auxlossw2 0" ).
 
 To train the upstream models without any auxiliary tasks:
 ```
