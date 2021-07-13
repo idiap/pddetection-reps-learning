@@ -82,7 +82,7 @@ class DownStreamTrain(nn.Module):
 
 
 if __name__ == "__main__":
-    # ------------------------------ get rid of this ----------------------------- #
+    # ------------------------------path change ----------------------------- #
     from pathlib import Path
     import sys
 
