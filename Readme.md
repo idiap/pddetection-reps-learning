@@ -32,7 +32,7 @@ We include in this repo
 ## **Requirements**
 Python 3 or above
 PyTorch 1.6.0 or above.
-Other required packages are listed below, and also in requirements.yml:
+Other required packages are listed below, and also in req.yml:
 - cudatoolkit
 - joblib
 - pandas
