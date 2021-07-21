@@ -77,7 +77,7 @@ To train the upstream models without any auxiliary tasks:
 ```
 python train_upstream.py --newinit --valmonitor 
 ```
-Results of the experiments are saved in /results/{ups}-{expname} directory.
+Results of the experiments are saved in /results/ups-{expname} directory.
 
 ## **Downstream training/evaluation**
 
@@ -90,6 +90,6 @@ in case of fine-tuning the upstream encoder along with downstream training use "
 
 For evaluating the previously saved downstream model, use "--mode evaluation" argument instead of "--mode train".
 
-Results of the experiments are saved in /results/{ds}-{expname} directory.
+Results of the experiments are saved in /results/ds-{expname} directory.
 
 
