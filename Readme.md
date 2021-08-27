@@ -23,7 +23,7 @@ pages={arXiv:2106.00531}}
 
 We include in this repo
 
-* Supervised representation learning for Parkinson’s disease (PD) classification using an auto-encoder and auxiliary tasks (i.e., Adversarial speaker identity-invariant training and PD discriminative training)
+* Supervised representation learning for Parkinson’s disease (PD) classification using an auto-encoder and auxiliary tasks (i.e., adversarial speaker identity-invariant training and PD discriminative training)
     * Speech representation computation (database preprocessing), we included both on-the-fly and offline data preprocessing.
     * Training an upstream task, i.e., an auto-encoder, which can be jointly trained with the auxiliary speaker identification (ID) task and/or with the auxiliary PD classifiers. 
     * Training/testing the final downstream task, e.g., PD classification, using the pre-trained representation (from upstream task).
