@@ -69,19 +69,19 @@ class AEMLPNet(nn.Module):
         self.dropout = nn.Dropout(dropout_prob)
         self.seqlen = seqlen
         self.freqlen = freqlen
-        self.all_layers_uints = self.hidden_units + [
+        self.all_layers_units = self.hidden_units + [
             self.code_dim
         ]  # one layer would be added by default
 
         layers = []
-        for layers_num in range(len(self.all_layers_uints)):
+        for layers_num in range(len(self.all_layers_units)):
             in_dim = (
                 seqlen * freqlen
                 if layers_num == 0
-                else self.all_layers_uints[layers_num - 1]
+                else self.all_layers_units[layers_num - 1]
             )
-            out_dim = self.all_layers_uints[layers_num]
-            if layers_num != len(self.all_layers_uints) - 1:
+            out_dim = self.all_layers_units[layers_num]
+            if layers_num != len(self.all_layers_units) - 1:
                 layers += [nn.Linear(in_dim, out_dim), self.nonlinearity]
             else:
                 layers += [nn.Linear(in_dim, out_dim)]
@@ -90,15 +90,15 @@ class AEMLPNet(nn.Module):
         self.EncoderNet = nn.Sequential(*layers)
 
         decode_layers = []
-        self.all_decoded_layers_uints = self.hidden_units[::-1] + [seqlen * freqlen]
-        for layers_num in range(len(self.all_decoded_layers_uints)):
+        self.all_decoded_layers_units = self.hidden_units[::-1] + [seqlen * freqlen]
+        for layers_num in range(len(self.all_decoded_layers_units)):
             in_dim = (
                 self.code_dim
                 if layers_num == 0
-                else self.all_decoded_layers_uints[layers_num - 1]
+                else self.all_decoded_layers_units[layers_num - 1]
             )
-            out_dim = self.all_decoded_layers_uints[layers_num]
-            if layers_num != len(self.all_decoded_layers_uints) - 1:
+            out_dim = self.all_decoded_layers_units[layers_num]
+            if layers_num != len(self.all_decoded_layers_units) - 1:
                 decode_layers += [nn.Linear(in_dim, out_dim), self.nonlinearity]
             else:
                 decode_layers += [nn.Linear(in_dim, out_dim)]
@@ -269,7 +269,7 @@ class AECNNNetEnc(nn.Module):
         self.maxpool = nn.MaxPool2d(poolingsize)
         self.seqlen = seqlen
         self.freqlen = freqlen
-        self.all_layers_uints = self.hidden_units + [self.code_dim]
+        self.all_layers_units = self.hidden_units + [self.code_dim]
         # for one-channel spectrograms
         self.convchannels = [1] + convchannels
         self.psize = poolingsize
@@ -307,12 +307,12 @@ class AECNNNetEnc(nn.Module):
             size_before_pooling,
         ]
         layers = []
-        for layers_num in range(len(self.all_layers_uints)):
+        for layers_num in range(len(self.all_layers_units)):
             in_dim = (
-                self.lsize if layers_num == 0 else self.all_layers_uints[layers_num - 1]
+                self.lsize if layers_num == 0 else self.all_layers_units[layers_num - 1]
             )
-            out_dim = self.all_layers_uints[layers_num]
-            if layers_num != len(self.all_layers_uints) - 1:
+            out_dim = self.all_layers_units[layers_num]
+            if layers_num != len(self.all_layers_units) - 1:
                 layers += [nn.Linear(in_dim, out_dim), self.nonlinearity]
             else:
                 layers += [nn.Linear(in_dim, out_dim)]
@@ -374,7 +374,7 @@ class AECNNNetDec(nn.Module):
         self.maxpool = nn.MaxPool2d(poolingsize)
         self.seqlen = seqlen
         self.freqlen = freqlen
-        self.all_layers_uints = self.hidden_units + [self.code_dim]
+        self.all_layers_units = self.hidden_units + [self.code_dim]
         self.convchannels = [1] + convchannels  # for one-channel spectrograms
         self.psize = poolingsize
         self.ksize = kernelsize
@@ -387,15 +387,15 @@ class AECNNNetDec(nn.Module):
         for ele in self.CnnOutputShape:
             self.lsize *= ele
         decode_layers = []
-        self.all_decoded_layers_uints = self.hidden_units[::-1] + [self.lsize]
-        for layers_num in range(len(self.all_decoded_layers_uints)):
+        self.all_decoded_layers_units = self.hidden_units[::-1] + [self.lsize]
+        for layers_num in range(len(self.all_decoded_layers_units)):
             in_dim = (
                 self.code_dim
                 if layers_num == 0
-                else self.all_decoded_layers_uints[layers_num - 1]
+                else self.all_decoded_layers_units[layers_num - 1]
             )
-            out_dim = self.all_decoded_layers_uints[layers_num]
-            if layers_num != len(self.all_decoded_layers_uints) - 1:
+            out_dim = self.all_decoded_layers_units[layers_num]
+            if layers_num != len(self.all_decoded_layers_units) - 1:
                 decode_layers += [nn.Linear(in_dim, out_dim), self.nonlinearity]
             else:
                 decode_layers += [nn.Linear(in_dim, out_dim)]
@@ -580,7 +580,7 @@ class AERNNNetEnc(nn.Module):
         self.dropout = nn.Dropout(dropout_prob)
         self.seqlen = seqlen
         self.freqlen = freqlen
-        self.all_layers_uints = self.hidden_units + [self.code_dim]
+        self.all_layers_units = self.hidden_units + [self.code_dim]
         self.RNN_dims = [freqlen] + RNN_dims
         if bidirectional:
             self.directions = 2
@@ -604,12 +604,12 @@ class AERNNNetEnc(nn.Module):
         # concatenating outputs and hidden states
         self.lsize = 2 * self.directions * self.RNN_dims[-1]
         layers = []
-        for layers_num in range(len(self.all_layers_uints)):
+        for layers_num in range(len(self.all_layers_units)):
             in_dim = (
-                self.lsize if layers_num == 0 else self.all_layers_uints[layers_num - 1]
+                self.lsize if layers_num == 0 else self.all_layers_units[layers_num - 1]
             )
-            out_dim = self.all_layers_uints[layers_num]
-            if layers_num != len(self.all_layers_uints) - 1:
+            out_dim = self.all_layers_units[layers_num]
+            if layers_num != len(self.all_layers_units) - 1:
                 layers += [nn.Linear(in_dim, out_dim), self.nonlinearity]
             else:
                 layers += [nn.Linear(in_dim, out_dim)]
