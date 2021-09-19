@@ -872,7 +872,7 @@ class UPsRunner:
                         batch_loss[f"aux{num}"]
                     )
             batch_loss["total"] = [
-                (1 - self.aux_loss_w1 - self.aux_loss_w2)
+                (1 - np.abs(self.aux_loss_w1) - np.abs(self.aux_loss_w2))
                 * np.mean(batch_loss["ups_AE"])
                 + total_aux
             ]
