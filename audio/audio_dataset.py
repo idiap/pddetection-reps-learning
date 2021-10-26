@@ -144,7 +144,7 @@ class AcousticDataset(Dataset):
         Returns:
             (int): total number of audio segments
         """
-        return int(np.sum(1 + (self.X_lens // (self.overlap * self.sample_length))))
+        return int(np.sum(1 + (self.X_lens // int(self.overlap * self.sample_length))))
 
 
 class OfflineAcousticDataset(AcousticDataset):
